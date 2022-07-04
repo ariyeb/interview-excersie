@@ -1,5 +1,5 @@
 
-import { useDebugValue, useEffect, useLayoutEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge, ListGroup } from "react-bootstrap"
 import { improvedFibonnaci } from "../../utilities/helper-funcions/fibonacci";
 import { WorkerItem } from "../worker-item/worker-item"
@@ -19,16 +19,34 @@ export const WorkerList=({searchInput,workersList}:{searchInput:string ,workersL
     
     const memoWorkersList=useMemo(()=>addBadge(workersList),[]);
     
-    const filteredworkerList=memoWorkersList.filter(worker => {
+    /* let filteredworkerList=memoWorkersList.filter(worker => {
         const name = worker.first_name + ' ' + worker.last_name;
         return name.toLowerCase().includes(searchInput.toLowerCase());
     })
+     */
+   
+    const [workertoDisplayList,setlist]=useState(workersList);
+
     
+    
+
+
+    useEffect(()=>{
+        
+        setlist(memoWorkersList.filter(worker => {
+            const name = worker.first_name + ' ' + worker.last_name;
+            return name.toLowerCase().includes(searchInput.toLowerCase());
+        }))
+
+
+    },[searchInput])
+
+
     
     return(
         <ListGroup>
             {
-                filteredworkerList.map(worker =>
+                workertoDisplayList.map(worker =>
                     (
                     
                     <WorkerItem key={worker.id} first_name={worker.first_name} last_name={worker.last_name} badgeValue={worker.badge}></WorkerItem>
