@@ -1,38 +1,29 @@
-import { Button, Modal } from "react-bootstrap"
-
-
+import { Modal } from "../modal/modal"
 
 
 export const WorkerInfo=(props:any)=>{
 
-    return
-    ( 
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-                {props.fullname}
-            </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                consectetur ac, vestibulum at eros.
-            </p>
-            </Modal.Body>
-            <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-        </Modal>
-        
-    );
+    const {worker}=props;
+    
 
+
+    return(
+    <Modal isShown={props.isShown} setModal={props.setModal}>
+
+       
+        <h1>{worker.first_name} {worker.last_name} </h1>
+        <h2>badges: {worker.badge}</h2>
+
+        <dl>
+        <dt>first name:</dt><dd contentEditable={true} onInput={()=>console.log("hello")}>{worker.first_name}</dd>
+        <dt>last name:</dt><dd contentEditable={true} onInput={()=>console.log("hello")}>{worker.last_name}</dd>
+        <dt>email:</dt><dd contentEditable={true } onBlur={()=>console.log("hello")}>{worker.email}</dd>
+        <dt>gender:</dt><dd contentEditable={true} onInput={()=>console.log("hello")}>{worker.email}</dd>
+        <dt>ip adress:</dt><dd contentEditable={true} onInput={()=>console.log("hello")}>{worker.ip_address}</dd>
+        </dl>
+
+
+    </Modal>);
 
 
 }
