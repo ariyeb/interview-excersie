@@ -13,6 +13,8 @@ export const WorkerInfo=(props:any)=>{
        
         <h1>{worker.first_name} {worker.last_name} </h1>
         <h2>badges: {worker.badge}</h2>
+        
+
 
         <dl>
         <dt>first name:</dt><dd contentEditable={true} onInput={()=>console.log("hello")}>{worker.first_name}</dd>

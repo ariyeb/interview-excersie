@@ -28,9 +28,6 @@ export const WorkerList=({searchInput,workersList}:{searchInput:string ,workersL
     const [workertoDisplayList,setlist]=useState(workersList);
 
     
-    
-
-
     useEffect(()=>{
         
         setlist(memoWorkersList.filter(worker => {
