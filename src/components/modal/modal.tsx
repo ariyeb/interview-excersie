@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import "./modal.css";
 
 
@@ -12,7 +12,7 @@ export const Modal=(props:any)=>{
         <div className="my-modal">
             
             <div className="my-modal__body">
-                <button className="my-modal__button" onClick={()=>props.setModal(false)} >X</button> 
+                <button className="my-modal__button" onClick={()=>props.setModal({type:"REMOVE", payload:null})} >X</button> 
                     <div className="my-modal__container">
                     {props.children}
                     </div>
